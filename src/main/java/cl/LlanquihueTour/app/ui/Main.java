@@ -36,7 +36,7 @@ public class Main {
             String opcion = scanner.nextLine();
             switch (opcion) {
                 case "1":
-                    agregarPanorama();
+                    agregarPanorama(lista);
                     break;
                 case "2":
                     eliminarPanorama(lista);
@@ -58,7 +58,7 @@ public class Main {
 
     }
 
-    public static CentrosPanoramicos agregarPanorama() {
+    public static CentrosPanoramicos agregarPanorama(ArrayList<CentrosPanoramicos> Agregarlista) {
         System.out.println("Ingrese Nuevo Panorama");
         System.out.println("Nombre Panorama:");
         String nombre = scanner.nextLine();
@@ -71,6 +71,7 @@ public class Main {
         scanner.nextLine();
 
         CentrosPanoramicos nuevoPanorama = new CentrosPanoramicos(nombre, tipo, ubicacion, precioEstimado);
+        Agregarlista.add(nuevoPanorama);
         GestorDatos.GuardarPanorama(nuevoPanorama);
         return nuevoPanorama;
     }
