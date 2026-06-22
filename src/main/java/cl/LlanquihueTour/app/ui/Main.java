@@ -4,29 +4,114 @@ import cl.LlanquihueTour.app.data.GestorDatos;
 import cl.LlanquihueTour.app.model.CentrosPanoramicos;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    private static Scanner scanner;
+
     static void main(String[] args) {
+        scanner = new Scanner(System.in);
 
         ArrayList<CentrosPanoramicos> lista = new ArrayList<>();
 
         GestorDatos gestor = new GestorDatos();
 
         gestor.leer_archivo(lista);
+        mostrarMenu(lista);
+        scanner.close();
 
-        System.out.println("Listado de Panoramas");
+    }
 
-        for (CentrosPanoramicos cp : lista) {
-            System.out.println(cp);
-        }
-        System.out.println("Filtrados Por Tipo");
-        String TipoBuscar= "Restaurante";
-        for (CentrosPanoramicos cp : lista){
-            if (cp.getTipo().equals(TipoBuscar)){
-                System.out.println(cp);
+    public static void mostrarMenu(ArrayList<CentrosPanoramicos> lista) {
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("Menu Principal");
+            System.out.println("1. Agregar Panorama");
+            System.out.println("2. Eliminar Panorama");
+            System.out.println("3. Buscar Panorama");
+            System.out.println("4. Mostrar Todo los Panoramas");
+            System.out.println("5. Salir");
+
+            System.out.println("Selecione una Opción:");
+            String opcion = scanner.nextLine();
+            switch (opcion) {
+                case "1":
+                    agregarPanorama();
+                    break;
+                case "2":
+                    eliminarPanorama(lista);
+                    break;
+                case "3":
+                    buscarPanorama(lista);
+                    break;
+                case "4":
+                    mostrarPanoramas(lista);
+                    break;
+                case "5":
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
             }
+        }
+
+    }
+
+    public static CentrosPanoramicos agregarPanorama() {
+        System.out.println("Ingrese Nuevo Panorama");
+        System.out.println("Nombre Panorama:");
+        String nombre = scanner.nextLine();
+        System.out.println("Tipo De Panorama:");
+        String tipo = scanner.nextLine();
+        System.out.println("Ubicacion De Panorama:");
+        String ubicacion = scanner.nextLine();
+        System.out.println("Precio Estimado Del Panorama:");
+        int precioEstimado = scanner.nextInt();
+        scanner.nextLine();
+
+        CentrosPanoramicos nuevoPanorama = new CentrosPanoramicos(nombre, tipo, ubicacion, precioEstimado);
+        GestorDatos.GuardarPanorama(nuevoPanorama);
+        return nuevoPanorama;
+    }
+
+    public static void eliminarPanorama(ArrayList<CentrosPanoramicos> EleminarLista) {
+        System.out.println("Ingrese el nombre para eleminar el panorama:");
+        String eliminar = scanner.nextLine();
+
+        CentrosPanoramicos eliminado = GestorDatos.eLiminarPanorama(EleminarLista, eliminar);
+
+        if (eliminado != null) {
+            System.out.println(eliminado.getNombre() + "fue eliminado con éxito");
+        } else {
+            System.out.println("No se ha encontrado ningun panorama con ese nombre.");
+        }
+    }
+
+    public static void buscarPanorama(ArrayList<CentrosPanoramicos> listaBuscar) {
+        System.out.println("Ingrese El Nombre Del Panorama:");
+        String buscar = scanner.nextLine();
+
+        CentrosPanoramicos encontrado = GestorDatos.buscarPanoramaPorNombre(listaBuscar, buscar);
+
+        if (encontrado != null) {
+            System.out.println("Panorama Encontrado:");
+
+            System.out.println(encontrado);
+        } else {
+            System.out.println("No se ha encontrado ningun panorama con ese nombre" + buscar);
+        }
+    }
+    public static void mostrarPanoramas(ArrayList<CentrosPanoramicos> listaBuscar){
+
+        if (!listaBuscar.isEmpty()){
+            System.out.println("Mostrando Todo los Panoramas");
+
+            for (CentrosPanoramicos panorama : listaBuscar){
+                System.out.println(panorama);
+            }
+        }else {
+            System.out.println("No se ha agregado ningun panorama");
         }
     }
 }

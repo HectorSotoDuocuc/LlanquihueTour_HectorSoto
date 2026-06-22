@@ -3,3 +3,4 @@ Vuelta Al Lago;Excursion;Llanquihue;40000
 La Pergola De llanquihue;Restaurante;Llanquihue;30000
 Isla De Chiloe;Navegacion;chiloe;70000
 Volcan Calbuco;Escalada;Puerto mont;10000
+La tia rosa;Restaurante;Llanquihue;50000

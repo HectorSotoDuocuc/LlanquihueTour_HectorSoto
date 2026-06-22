@@ -10,12 +10,12 @@ public class CentrosPanoramicos {
 
     private String ubicacion;
 
-    private Double precioEstimado;
+    private int precioEstimado;
 
     private ArrayList<CentrosPanoramicos> listaPanoramas;
 
 
-    public CentrosPanoramicos(String nombre, String tipo, String ubicacion, double precioEstimado) {
+    public CentrosPanoramicos(String nombre, String tipo, String ubicacion, int precioEstimado) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.ubicacion = ubicacion;
@@ -47,11 +47,11 @@ public class CentrosPanoramicos {
         this.ubicacion = ubicacion;
     }
 
-    public Double getPrecioEstimado() {
+    public int getPrecioEstimado() {
         return precioEstimado;
     }
 
-    public void setPrecioEstimado(Double precioEstimado) {
+    public void setPrecioEstimado(int precioEstimado) {
         this.precioEstimado = precioEstimado;
     }
 
@@ -63,7 +63,8 @@ public class CentrosPanoramicos {
         this.listaPanoramas = listaParonamas;
     }
 
-    public void agregarPanorama(CentrosPanoramicos centrosPanoramicos) {listaPanoramas.add(centrosPanoramicos);}
+    public void agregarPanorama (CentrosPanoramicos centrosPanoramicos){
+        listaPanoramas.add(centrosPanoramicos);}
 
     public void eliminarPanorama(CentrosPanoramicos centrosPanoramicos){
         listaPanoramas.removeIf(cp -> cp.getNombre().equals(centrosPanoramicos.getNombre()));
@@ -78,10 +79,7 @@ public class CentrosPanoramicos {
 
     @Override
     public String toString() {
-        return "CentrosParonamicos:" +
-                "nombre:'" + nombre + '\'' +
-                ", tipo:'" + tipo + '\'' +
-                ", ubicacion:'" + ubicacion + '\'' +
-                ", precioEstimado:" + precioEstimado;
+        return nombre + ";" +tipo + ";" +ubicacion + ";" +precioEstimado;
+
     }
 }
