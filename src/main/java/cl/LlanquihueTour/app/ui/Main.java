@@ -2,12 +2,14 @@ package cl.LlanquihueTour.app.ui;
 
 import cl.LlanquihueTour.app.data.GestorDatos;
 import cl.LlanquihueTour.app.model.CentrosPanoramicos;
+import cl.LlanquihueTour.app.model.RutaGastronomica;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     private static Scanner scanner;
+
 
     static void main(String[] args) {
         scanner = new Scanner(System.in);
@@ -48,6 +50,8 @@ public class Main {
                     mostrarPanoramas(lista);
                     break;
                 case "5":
+                    mostrarServiciosTuristicos();
+                case "6":
                     salir = true;
                     break;
                 default:
@@ -114,5 +118,10 @@ public class Main {
         }else {
             System.out.println("No se ha agregado ningun panorama");
         }
+    }
+    public static void mostrarServiciosTuristicos(){
+        GestorDatos.crearRutaGastronomica();
+        GestorDatos.crearPaseoLacustre();
+        GestorDatos.crearExcursionCultural();
     }
 }
