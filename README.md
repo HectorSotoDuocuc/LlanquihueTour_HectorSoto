@@ -1,13 +1,13 @@
 ![Duoc UC](https://www.duoc.cl/wp-content/uploads/2022/09/logo-0.png)
-# Actividad Sumativa 2 Llanquihue Tour App - Desarrollo Orientado A Objeto I
+# Actividad Formativa 4 Llanquihue Tour App - Desarrollo Orientado A Objeto I
 
 ## Autor Del Proyecto
 - **Nombre:** Hector Eduardo Soto Vasquez
 - **Carrera:** Analista Programador Computacional
 
 ## Descripcion Del Proyecto
-Este es el proyecto sumativa 2 en cual es una actualizacion de la actividad formativa 3 en el cual el problema de la empresa llanquihue tour
-El Promblema de llanquihue tour de tener todo manualmente por eso se crear este proyecto para organicen mejor los tours
+Este es el proyecto Formativa 4 en cual es una actualizacion de la actividad Sumativa 2 en el cual el problema de la empresa llanquihue tour
+llanquihue tour Quiere tener una estructura mas flexible en cual tengan herencias para tener mayor flexibildad 
 
 ## Estructura General Del Proyecto
 
@@ -23,7 +23,10 @@ El Promblema de llanquihue tour de tener todo manualmente por eso se crear este 
 
 ---
 
-##Instrucciones para ejecutar el proyecto
+## Clases Creadas
+En Esta Semana Se creo las clases Madre que es ServicioTuristico la cual Tiene Objetos Nombre y DuracionHoras, estos objetos se transfieren a las clases RutaGastronomica,PaseoLacustre y ExcursionCultural en formato de herencia en cual cada uno de ellos le agrega un objeto dependiendod de su clase y su funcion 
+
+## Instrucciones para ejecutar el proyecto
 
 1. Clonar el repositorio desde Github.
 
