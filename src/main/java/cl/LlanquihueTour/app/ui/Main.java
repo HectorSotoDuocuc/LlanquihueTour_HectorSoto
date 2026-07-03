@@ -1,10 +1,13 @@
 package cl.LlanquihueTour.app.ui;
 
 import cl.LlanquihueTour.app.data.GestorDatos;
+import cl.LlanquihueTour.app.data.GestorServicios;
 import cl.LlanquihueTour.app.model.CentrosPanoramicos;
 import cl.LlanquihueTour.app.model.RutaGastronomica;
+import cl.LlanquihueTour.app.model.ServicioTuristico;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,18 +16,20 @@ public class Main {
 
     static void main(String[] args) {
         scanner = new Scanner(System.in);
+        GestorServicios gestor1 = new GestorServicios();
+
 
         ArrayList<CentrosPanoramicos> lista = new ArrayList<>();
 
         GestorDatos gestor = new GestorDatos();
 
         gestor.leer_archivo(lista);
-        mostrarMenu(lista);
+        mostrarMenu(lista, gestor1);
         scanner.close();
 
     }
 
-    public static void mostrarMenu(ArrayList<CentrosPanoramicos> lista) {
+    public static void mostrarMenu(ArrayList<CentrosPanoramicos> lista, GestorServicios gestor1) {
         boolean salir = false;
         while (!salir) {
             System.out.println("Menu Principal");
@@ -32,7 +37,8 @@ public class Main {
             System.out.println("2. Eliminar Panorama");
             System.out.println("3. Buscar Panorama");
             System.out.println("4. Mostrar Todo los Panoramas");
-            System.out.println("5. Salir");
+            System.out.println("5. Mostrar Todo Los Servicios Turisticos");
+            System.out.println("6. Salir");
 
             System.out.println("Selecione una Opción:");
             String opcion = scanner.nextLine();
@@ -50,7 +56,7 @@ public class Main {
                     mostrarPanoramas(lista);
                     break;
                 case "5":
-                    mostrarServiciosTuristicos();
+                    mostrarServiciosTuristicos(gestor1.obtenerServicios());
                 case "6":
                     salir = true;
                     break;
@@ -119,9 +125,13 @@ public class Main {
             System.out.println("No se ha agregado ningun panorama");
         }
     }
-    public static void mostrarServiciosTuristicos(){
-        GestorDatos.crearRutaGastronomica();
-        GestorDatos.crearPaseoLacustre();
-        GestorDatos.crearExcursionCultural();
+    public static void mostrarServiciosTuristicos(List<ServicioTuristico> obtenerServicios){
+        if (obtenerServicios == null || obtenerServicios.isEmpty()) {
+            System.out.println("No Hay Servicios Turisticos registrados.");
+            return;
+        }
+        for (ServicioTuristico servicio : obtenerServicios) {
+            servicio.mostrarInformacion();
+        }
     }
 }
