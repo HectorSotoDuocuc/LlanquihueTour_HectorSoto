@@ -1,6 +1,6 @@
 package cl.LlanquihueTour.app.model;
 
-public class ServicioTuristico {
+public class ServicioTuristico implements Registable{
     protected String nombre;
     protected double duracionHoras;
 
@@ -28,5 +28,10 @@ public class ServicioTuristico {
     public void mostrarInformacion() {
         System.out.println(nombre
         + " -Duracion: " + duracionHoras + " Horas");
+    }
+
+    @Override
+    public void mostrarResumen() {
+
     }
 }

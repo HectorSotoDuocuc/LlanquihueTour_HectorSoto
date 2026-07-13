@@ -1,6 +1,6 @@
 package cl.LlanquihueTour.app.model;
 
-public class RutaGastronomica extends ServicioTuristico{
+public class RutaGastronomica extends ServicioTuristico implements Registable{
     private int numeroDeParadas;
 
     public RutaGastronomica(String nombre, double duracionHoras, int numeroDeParadas) {
@@ -17,8 +17,7 @@ public class RutaGastronomica extends ServicioTuristico{
     }
 
     @Override
-    public void mostrarInformacion() {
-        super.mostrarInformacion();
-        System.out.println("Tipo: Ruta Gastronomica -" + " NumerosDeParadas: " + numeroDeParadas);
+    public void mostrarResumen() {
+        System.out.println("Nombre Ruta Gastronomica:" + nombre + ", Duracion Horas" + duracionHoras + "Numero De Paradas Gastronomicas:" + numeroDeParadas);
     }
 }

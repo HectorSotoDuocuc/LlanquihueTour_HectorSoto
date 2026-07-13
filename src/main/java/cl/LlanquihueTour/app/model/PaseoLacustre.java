@@ -1,6 +1,6 @@
 package cl.LlanquihueTour.app.model;
 
-public class PaseoLacustre extends ServicioTuristico{
+public class PaseoLacustre extends ServicioTuristico implements Registable{
     private String tipoEmbarcacion;
 
     public PaseoLacustre(String nombre, double duracionHoras, String tipoEmbarcacion) {
@@ -17,8 +17,8 @@ public class PaseoLacustre extends ServicioTuristico{
     }
 
     @Override
-    public void mostrarInformacion() {
-        super.mostrarInformacion();
+    public void mostrarResumen() {
+        super.mostrarResumen();
         System.out.println("Tipo: PaseoLacustre - " + "TipoDeEmbarcacion: " + tipoEmbarcacion);
     }
 }
